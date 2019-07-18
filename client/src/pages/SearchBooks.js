@@ -1,10 +1,10 @@
     
 import React, { Component } from "react";
-import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron";
 import { Container, Row, Col } from "../components/Grid";
 import SearchForm from "../components/SearchForm";
-import SearchResult from "../components/SearchResult"
+import SearchResult from "../components/SearchResult";
+import API from "../utils/API";
 
 
 class SearchBooks extends Component {
@@ -32,27 +32,17 @@ class SearchBooks extends Component {
                 }
                 else {
                     // store response in a array
-                    let results = res.data.items
-                    console.log(results)
+                    let books = res.data.items
+                    console.log(books)
                     //map through the array 
-                    results = results.map(result => {
-                        //store each book information in a new object 
-                        result = {
-                            key: result.id,
-                            id: result.id,
-                            title: result.volumeInfo.title,
-                            author: result.volumeInfo.authors,
-                            description: result.volumeInfo.description,
-                            image: result.volumeInfo.imageLinks.thumbnail,
-                            link: result.volumeInfo.infoLink
-                        }
-                        return result;
-                    })
-                    // reset the sate of the empty books array to the new arrays of objects with properties geting back from the response
-                    this.setState({ books: results, error: "" })
+                    this.setState({
+                        books,
+                        search: ""
+                    });
                 }
+                        
             })
-            .catch(err => this.setState({ error: err.items }));
+           
     }
 
     handleSavedButton = event => {
@@ -84,7 +74,7 @@ class SearchBooks extends Component {
                 <br></br>
                 <Container>
                     
-                    <SearchResult books={this.state.books} handleSavedButton={this.handleSavedButton} />
+                    <SearchResult books={this.state.books} handleSavedButton={this.handleSavedButton} origin="search" />
                 </Container>
             </Container>
         )
