@@ -8,12 +8,12 @@ function Nav() {
       </a>
 
       <div id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Search</a>
+    <ul className="navbar-nav">
+      <li className="nav-item">
+        <a className="nav-link" href="/">Search</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/saved">Saved Books</a>
+      <li className="nav-item">
+        <a className="nav-link" href="/saved">Saved Books</a>
       </li>
      
      
