@@ -1,13 +1,12 @@
 import React from "react";
 import {Row, Col} from "../Grid"
-
 import "./style.css";
 
-// This file exports both the List and ListItem components
+
 
 
 const SavedResult = props => {
-  return (props.savedBooks.length === 0) ? (
+  return (props.books.length === 0) ? (
       <div className="card">
           <div className="card-body player">
               <div className="article">

@@ -1,4 +1,4 @@
-    
+
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import { Container, Row, Col } from "../components/Grid";
@@ -63,12 +63,15 @@ class SearchBooks extends Component {
         let savedBooks = this.state.books.filter(book => book.id === event.target.id)
         savedBooks = savedBooks[0];
         API.saveBook(savedBooks)
-            .then(this.setState({ message: alert("Your book is saved") }))
+            .then(this.setState(
+                {
+                message: alert("Your book is saved")
+            }))
             .catch(err => console.log(err))
     }
     render() {
         return (
-            <div>
+            <Container fluid>
                 <Jumbotron>
                     <h1 className="text-white">Find Your Favorite Books with GoogleBook API</h1>
                 </Jumbotron>
@@ -86,10 +89,10 @@ class SearchBooks extends Component {
                     </Row>
                 </Container>
                 <br></br>
-                <Container>                    
+                <Container>
                     <SearchResult books={this.state.books} handleSavedButton={this.handleSavedButton} />
                 </Container>
-            </div>
+            </Container>
         )
     }
 

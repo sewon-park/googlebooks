@@ -19,7 +19,6 @@ const SearchResult = props => {
                         <h3>Search Results</h3>
                         {props.books.map(book => {
                             return (
-
                                 <li className="search-list list-group-item" key={book._id}>
                                     <Row className="SearchResult row" id={book.title + "Card"} >
                                         {/* col-3 show image of the book */}
@@ -33,7 +32,7 @@ const SearchResult = props => {
                                                 <h3 className="bookTitle">{book.title}</h3>
                                             </Row>
                                             <Row>
-                                                <h4 className="bookAuthor">{book.author[0]}</h4>
+                                                <h4 className="bookAuthor">{book.author}</h4>
                                             </Row>
                                             <Row>
                                                 <p className="bookDescription">{book.description}</p>
