@@ -4,10 +4,14 @@
 }
 
 .saveBook{
-  margin:2px;
+  margin:4px;
+  background-color:#FC4A1A;
+  border:none;
 }
 
 .viewBook{
-  margin:2px;
+  margin:4px;
+  background-color:#F7B733;
+  border:none;
 }
 
