@@ -1,0 +1,8 @@
+.jumbotron{
+  
+  opacity:1;  
+  text-align: center;
+  background: url("../../images/book.jpg") center center / cover no-repeat;
+  background-size: cover;
+  margin-bottom:100px;
+}
