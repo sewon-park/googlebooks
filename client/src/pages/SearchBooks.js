@@ -32,21 +32,32 @@ class SearchBooks extends Component {
                 }
                 else {
                     // store response in a array
-                    let books = res.data.items
-                    console.log(books)
+                    let results = res.data.items
+                    console.log(results)
                     //map through the array 
-                    this.setState({
-                        books,
-                        search: ""
-                    });
+                    results = results.map(result => {
+                        //store each book information in a new object 
+                        result = {
+                            key: result.id,
+                            id: result.id,
+                            title: result.volumeInfo.title,
+                            author: result.volumeInfo.authors,
+                            description: result.volumeInfo.description,
+                            image: result.volumeInfo.imageLinks.thumbnail,
+                            link: result.volumeInfo.infoLink
+                        }
+                        console.log(result);
+                        return result;
+                    })
+                    // reset the sate of the empty books array to the new arrays of objects with properties geting back from the response
+                    this.setState({ books: results, error: "" })
                 }
-                        
             })
-           
+            .catch(err => this.setState({ error: err.items }));
     }
 
     handleSavedButton = event => {
-        // console.log(event)
+        console.log(event)
         event.preventDefault();
         console.log(this.state.books)
         let savedBooks = this.state.books.filter(book => book.id === event.target.id)
@@ -69,12 +80,14 @@ class SearchBooks extends Component {
                                 handleInputChange={this.handleInputChange}
                             />
                         </Col>
+                        <Col size="12">
+                            <h1> {this.state.results}</h1>
+                        </Col>
                     </Row>
                 </Container>
                 <br></br>
-                <Container>
-                    
-                    <SearchResult books={this.state.books} handleSavedButton={this.handleSavedButton} origin="search" />
+                <Container>                    
+                    <SearchResult books={this.state.books} handleSavedButton={this.handleSavedButton} />
                 </Container>
             </Container>
         )
