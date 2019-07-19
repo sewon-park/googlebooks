@@ -10,4 +10,4 @@ This React based web application lets users search book information including ti
 * Styling: Bootstrap
 
 ## Demo
-<img src = "client/demo/demo.gif" width = "700">
+<img src = "client/demo/googlebooks.gif" width = "700">
